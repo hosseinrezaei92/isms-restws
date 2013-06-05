@@ -98,6 +98,10 @@
         <filter-name>springSecurityFilterChain</filter-name>
         <url-pattern>/auth/*</url-pattern>
     </filter-mapping>
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/rest/*</url-pattern>
+    </filter-mapping>
 	<filter-mapping>
 		<filter-name>contextInitializer</filter-name>
 		<url-pattern>/todo/*</url-pattern>
@@ -110,6 +114,11 @@
         <filter-name>contextInitializer</filter-name>
         <url-pattern>/auth/*</url-pattern>
     </filter-mapping>
+     <filter-mapping>
+        <filter-name>contextInitializer</filter-name>
+        <url-pattern>/rest/*</url-pattern>
+    </filter-mapping>
+    
     
     <!-- Primefaces fileupload -->
     <filter> 
@@ -202,4 +211,26 @@
       <!-- Session idle timeout in min. -->
       <session-timeout>30</session-timeout> 
     </session-config>
+    
+    <!-- Jersey Configuration -->
+    <servlet>
+	<servlet-name>jersey-servlet</servlet-name>
+	<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+	<init-param>
+		<param-name>com.sun.jersey.config.property.packages</param-name>
+		<param-value>sernet.verinice.jersey</param-value>
+	</init-param>
+	<init-param>
+		<param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
+		<param-value>true</param-value>
+	</init-param>
+	<load-on-startup>1</load-on-startup>
+  </servlet>
+ 
+  <servlet-mapping>
+	<servlet-name>jersey-servlet</servlet-name>
+	<url-pattern>/rest/*</url-pattern>
+  </servlet-mapping>
+    
+    
 </web-app>

@@ -118,6 +118,7 @@ public class ToDoBean {
 	
 	public void loadToDoListForVerbund() {
 	    String title = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("itVerbundTitle");
+	    System.out.println(title);
 	    if(title!=null) {
 	        getAssetNavigation().setSelectedItVerbundTitel(title);
 	    }

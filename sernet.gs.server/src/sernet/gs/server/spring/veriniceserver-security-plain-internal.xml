@@ -44,6 +44,7 @@
 			<security:filter-chain pattern="/todo/**" filters="httpSessionContextIntegrationFilter,digestProcessingFilter,exceptionTranslationFilter,filterSecurityInterceptor" />
             <security:filter-chain pattern="/sync/**" filters="httpSessionContextIntegrationFilter,digestProcessingFilter,exceptionTranslationFilter,filterSecurityInterceptor" /> 
 			<security:filter-chain pattern="/service/**" filters="httpSessionContextIntegrationFilter,digestProcessingFilter,exceptionTranslationFilter,filterSecurityInterceptor" />
+			<security:filter-chain pattern="/rest/**" filters="httpSessionContextIntegrationFilter,digestProcessingFilter,exceptionTranslationFilter,filterSecurityInterceptor" />
 		</security:filter-chain-map>
 	</bean>
     
@@ -97,6 +98,7 @@
 				<security:intercept-url pattern="/todo/**" access="ROLE_WEB" />
 				<security:intercept-url pattern="/service/**" access="ROLE_USER" />
 				<security:intercept-url pattern="/sync/**" access="ROLE_USER" />
+				<security:intercept-url pattern="/rest/**" access="ROLE_USER" />
 			</security:filter-invocation-definition-source>
 		</property>
 	</bean>

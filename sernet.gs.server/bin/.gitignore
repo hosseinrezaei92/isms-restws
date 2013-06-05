@@ -1,13 +1,2 @@
+/.gitignore
 /sernet
-/jpdl-4.0.xsd
-/jpdl-4.2.xsd
-/jpdl-4.3.xsd
-/jpdl-4.4.xsd
-/log4j-prod.xml
-/log4j.xml
-/org
-/server_hibernate-basic.cfg.xml
-/server_hibernate.cfg.xml
-/server_hibernate_derby.cfg.xml
-/server_hibernate_oracle-basic.cfg.xml
-/server_hibernate_oracle.cfg.xml

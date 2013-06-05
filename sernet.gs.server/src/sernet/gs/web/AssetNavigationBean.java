@@ -103,12 +103,14 @@ public class AssetNavigationBean {
 		try {
 			setSelectedItVerbund((ITVerbund) getItVerbundConverter().getAsObject(null, null, getSelectedItVerbundTitel()));
 			itVerbundId = (getSelectedItVerbund()==null) ? null : getSelectedItVerbund().getDbId();
+			System.out.println(itVerbundId);
 			if(itVerbundId!=null || getSelectedElementId()!=null) {
 				ICommandService service = (ICommandService) VeriniceContext.get(VeriniceContext.COMMAND_SERVICE);
 				int id = (itVerbundId!=null) ? itVerbundId.intValue() : -1;
 				if(SOURCE_ELEMENT==source && getSelectedElementId()!=null) {
 					id = getSelectedElementId();
 				}
+				System.out.println("ID: " + id);
 				command.setId(id);
 				service.executeCommand(command);			
 				if(SOURCE_VERBUND==source) {
