@@ -11,19 +11,19 @@
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="lib/el-api.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey/activation-1.1.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey/asm-3.1.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey/jackson-core-asl-1.7.1.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey/jackson-jaxrs-1.7.1.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey/jackson-mapper-asl-1.7.1.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey/jackson-xc-1.7.1.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey/jaxb-api-2.2.2.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey/jaxb-impl-2.2.3-1.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey/jersey-core-1.8.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey/jersey-json-1.8.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey/jersey-server-1.8.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey/jettison-1.1.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey/stax-api-1.0-2.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey/stax-api-1.0.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/activation-1.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/asm-3.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jackson-core-asl-1.7.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jackson-jaxrs-1.7.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jackson-mapper-asl-1.7.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jackson-xc-1.7.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jaxb-api-2.2.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jaxb-impl-2.2.3-1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-core-1.8.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-json-1.8.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-server-1.8.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jettison-1.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/stax-api-1.0-2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/stax-api-1.0.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
