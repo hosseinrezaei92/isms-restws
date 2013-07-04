@@ -13,6 +13,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 import org.springframework.security.providers.UsernamePasswordAuthenticationToken;
  
 import sernet.gs.server.security.DummyAuthentication;
@@ -58,6 +60,27 @@ public class REST_Webservice_ISO27000_Tasks {
 		return taskList;	
 	}
 	
+	@POST
+	@Path("/post")
+	@Produces(MediaType.APPLICATION_JSON)
+	public JSONObject saveData(ITask item) {
+		String answer = "";
+		System.out.println("ISO_27000_REST_Webservice saving service called!");
+		System.out.println(item);
+
+		return createAnswer(answer);
+		
+	}
+	
+	private JSONObject createAnswer(String answer) {
+		JSONObject jsonObj = null;
+		try {
+			jsonObj = new JSONObject("{\"Saving\":\"" + answer +"\"}");
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return jsonObj;
+	}
 	
 	private ITaskService getTaskService() {
         return (ITaskService) VeriniceContext.get(VeriniceContext.TASK_SERVICE);
