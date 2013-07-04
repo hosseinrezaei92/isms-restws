@@ -13,6 +13,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 import org.springframework.security.providers.UsernamePasswordAuthenticationToken;
  
 import sernet.gs.server.security.DummyAuthentication;
@@ -28,36 +30,26 @@ import sernet.hui.common.VeriniceContext;
 import sernet.verinice.interfaces.CommandException;
 import sernet.verinice.interfaces.ICommand;
 import sernet.verinice.interfaces.ICommandService;
+import sernet.verinice.interfaces.bpm.ITask;
+import sernet.verinice.interfaces.bpm.ITaskParameter;
+import sernet.verinice.interfaces.bpm.ITaskService;
+import sernet.verinice.model.bpm.TaskParameter;
 import sernet.verinice.model.bsi.MassnahmenUmsetzung;
 import sernet.verinice.model.common.CnATreeElement;
 
-@Path("/json/metallica")
-public class Connection {
+@Path("/json/bsi_controls")
+public class REST_Webservice_BSI_Controls {
  
 	private ICommandService commandService;
-	private Set<UnresolvedItem> unresolvedItems = new HashSet<UnresolvedItem>();
-	private Set<TodoViewItem> massnahmen = new HashSet<TodoViewItem>(20);
-	
 	Set<TodoViewItem> cna;
-	
+
 	@GET
 	@Path("/get")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Track getTrackInJSON() {
- 
-		Track track = new Track();
-		track.setTitle("MyName");
-		track.setSinger("Metallica");
- 
-		return track;
- 
-	}
- 
-	@GET
-	@Path("/todo")
-	@Produces(MediaType.APPLICATION_JSON)
 	public Set<TodoViewItem> getService() {
 	
+		System.out.println("BSI_REST_Webservice called!");
+		
 		LoadChildrenAndMassnahmen command = new LoadChildrenAndMassnahmen(88);
 	
 		Set<TodoViewItem> all = null;
@@ -77,6 +69,30 @@ public class Connection {
  
 	}
 	
+	@POST
+	@Path("/post")
+	@Produces(MediaType.APPLICATION_JSON)
+	public JSONObject saveData(TodoViewItem item) {
+		String answer = "";
+		System.out.println("BSI_REST_Webservice saving service called!");
+		System.out.println(item);
+		
+		
+		
+		return createAnswer(answer);
+		
+	}
+	
+	private JSONObject createAnswer(String answer) {
+		JSONObject jsonObj = null;
+		try {
+			jsonObj = new JSONObject("{\"Saving\":\"" + answer +"\"}");
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return jsonObj;
+	}
+
 	private ICommandService getCommandService() {
         if(commandService==null) {
             commandService = createCommandService();
