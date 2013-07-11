@@ -33,20 +33,66 @@ import sernet.verinice.interfaces.ICommandService;
 import sernet.verinice.interfaces.bpm.ITask;
 import sernet.verinice.interfaces.bpm.ITaskParameter;
 import sernet.verinice.interfaces.bpm.ITaskService;
+import sernet.verinice.model.bpm.TaskInformation;
 import sernet.verinice.model.bpm.TaskParameter;
 import sernet.verinice.model.bsi.MassnahmenUmsetzung;
 import sernet.verinice.model.common.CnATreeElement;
 
-@Path("/json/bsi_controls")
-public class REST_Webservice_BSI_Controls {
+@Path("/json")
+public class Webservice {
  
-	private ICommandService commandService;
+	private List<ITask> taskList;
 	Set<TodoViewItem> cna;
-
+	private ICommandService commandService;
+	
 	@GET
-	@Path("/get")
+	@Path("/auth/get")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Set<TodoViewItem> getService() {
+	public JSONObject getAuthService(){
+		
+		System.out.println("Authentification accepted");
+		JSONObject jsonObj = null;
+		try {
+			jsonObj = new JSONObject("{\"Access\":\"granted\"}");
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return jsonObj;	
+	}	
+	
+	
+	@GET
+	@Path("/iso_27000/get")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<ITask> getISO27000(){
+		
+		System.out.println("ISO_REST_Webservice called!");
+		
+		ITaskParameter parameter = new TaskParameter();
+        parameter.setRead(true);
+        parameter.setUnread(true);  
+        
+        taskList = getTaskService().getTaskList(parameter);
+
+		return taskList;	
+	}
+	
+	@POST
+	@Path("/iso_27000/post")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public JSONObject saveISO27000Data(ITask item) {
+		String answer = "";
+		System.out.println("ISO_27000_REST_Webservice saving service called!");
+		System.out.println(item);
+
+		return createAnswer(answer);
+		
+	}
+	
+	@GET
+	@Path("/bsi_controls/get")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Set<TodoViewItem> getBSIControls() {
 	
 		System.out.println("BSI_REST_Webservice called!");
 		
@@ -70,9 +116,9 @@ public class REST_Webservice_BSI_Controls {
 	}
 	
 	@POST
-	@Path("/post")
-	@Produces(MediaType.APPLICATION_JSON)
-	public JSONObject saveData(TodoViewItem item) {
+	@Path("/bsi_controls/post")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public JSONObject saveBSIControlsData(TodoViewItem item) {
 		String answer = "";
 		System.out.println("BSI_REST_Webservice saving service called!");
 		System.out.println(item);
@@ -92,7 +138,11 @@ public class REST_Webservice_BSI_Controls {
 		}
 		return jsonObj;
 	}
-
+	
+	private ITaskService getTaskService() {
+        return (ITaskService) VeriniceContext.get(VeriniceContext.TASK_SERVICE);
+    }
+	
 	private ICommandService getCommandService() {
         if(commandService==null) {
             commandService = createCommandService();
@@ -103,5 +153,4 @@ public class REST_Webservice_BSI_Controls {
     private ICommandService createCommandService() {
         return(ICommandService) VeriniceContext.get(VeriniceContext.COMMAND_SERVICE);
     }
- 
 }
