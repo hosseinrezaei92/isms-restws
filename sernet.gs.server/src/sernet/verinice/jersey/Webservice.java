@@ -80,10 +80,10 @@ public class Webservice {
 	@POST
 	@Path("/iso_27000/post")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public JSONObject saveISO27000Data(ITask item) {
+	public JSONObject saveISO27000Data(String item) {
 		String answer = "";
 		System.out.println("ISO_27000_REST_Webservice saving service called!");
-		System.out.println(item);
+		System.out.println("Übergebenes Item: " + item);
 
 		return createAnswer(answer);
 		
